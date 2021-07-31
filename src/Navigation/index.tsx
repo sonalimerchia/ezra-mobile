@@ -42,7 +42,7 @@ const Stack = createStackNavigator<StackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator
-      screenOptions={{ headerShown: false }}
+      screenOptions={{ headerShown: false, gestureEnabled: false }}
       initialRouteName="UnauthStack">
       <Stack.Screen name="Loading" component={Loading} />
       <Stack.Screen name="AuthStack" component={AuthStack} />

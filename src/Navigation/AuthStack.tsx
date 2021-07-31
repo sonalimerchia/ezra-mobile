@@ -16,7 +16,9 @@ const Drawer = createDrawerNavigator<AuthStackParamList>();
 
 const AuthStack = () => {
   return (
-    <Drawer.Navigator initialRouteName="Home">
+    <Drawer.Navigator
+      initialRouteName="Home"
+      screenOptions={{ gestureEnabled: false }}>
       <Drawer.Screen name="Home" component={HomeStack} />
       <Drawer.Screen name="Templates" component={TemplatesStack} />
       <Drawer.Screen name="Compose" component={ComposeStack} />

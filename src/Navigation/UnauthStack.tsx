@@ -8,7 +8,7 @@ const Stack = createStackNavigator<UnauthStackParamList>();
 const UnauthStack = () => (
   <Stack.Navigator
     initialRouteName="Login"
-    screenOptions={{ headerShown: false }}>
+    screenOptions={{ headerShown: false, gestureEnabled: false }}>
     <Stack.Screen name="Login" component={Login} />
     <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
     <Stack.Screen name="CreateAccount" component={CreateAccount} />

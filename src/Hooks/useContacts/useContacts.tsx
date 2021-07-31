@@ -32,7 +32,7 @@ const useContacts = (): HookReturnType => {
     .collection('contacts');
 
   const listener = () =>
-    contactsRef.onSnapshot(snapshot => {
+    contactsRef.orderBy('name', 'asc').onSnapshot(snapshot => {
       if (!snapshot) return;
 
       try {
@@ -82,21 +82,21 @@ const useContacts = (): HookReturnType => {
       }
     } else {
       // Update existing contacts
-      // const firebaseContact = doc.data() as Contact;
-      // if (!deepEqual(firebaseContact.appleData, c)) {
-      //   if (!firebaseContact.preferredNumber) {
-      return cRef.update({
-        name: makeName(c),
-        phoneNumber: extractPhoneNumber(c),
-        appleData: c,
-      });
-      // } else {
-      //   return cRef.update({
-      //     name: makeName(c),
-      //     appleData: c,
-      //   });
-      // }
-      // }
+      const firebaseContact = doc.data() as Contact;
+      if (!deepEqual(firebaseContact.appleData, c)) {
+        if (!firebaseContact.preferredNumber) {
+          return cRef.update({
+            name: makeName(c),
+            phoneNumber: extractPhoneNumber(c),
+            appleData: c,
+          });
+        } else {
+          return cRef.update({
+            name: makeName(c),
+            appleData: c,
+          });
+        }
+      }
     }
   };
 

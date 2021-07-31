@@ -134,6 +134,7 @@ const SelectContacts = () => {
             label="Filter"
             onPress={() => setCategoryBottomSheetOpen(true)}
           />
+          <TagButton label="Continue" onPress={() => onSubmit()} />
         </Box>
         <Checkboxes
           onPressOption={onPress}
@@ -141,6 +142,7 @@ const SelectContacts = () => {
             .filter(
               c => !filterCategory || c.categories.includes(filterCategory),
             )
+            .sort((a, b) => (a.name > b.name ? 1 : -1))
             .map((c: Contact) => ({
               name: c.name,
               subtitle: formatNumber(c.phoneNumber),
@@ -148,9 +150,6 @@ const SelectContacts = () => {
               selected: values[c.id],
             }))}
         />
-        <Box position="absolute" bottom={0} right={0}>
-          <ArrowButton onPress={onSubmit} disabled={!isValid} />
-        </Box>
       </>
     </Box>
   );

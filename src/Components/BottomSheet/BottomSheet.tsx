@@ -41,6 +41,7 @@ const BottomSheet: React.FC<BottomSheetProps> = ({
           ListHeaderComponent: header,
           style: {
             margin: lightTheme.safeArea,
+            maxHeight: '80%',
           },
         }}
       />
@@ -48,7 +49,11 @@ const BottomSheet: React.FC<BottomSheetProps> = ({
   }
 
   return (
-    <Modalize ref={ref} onClosed={onClose} adjustToContentHeight={true}>
+    <Modalize
+      ref={ref}
+      onClosed={onClose}
+      adjustToContentHeight={true}
+      modalStyle={{ maxHeight: '80%' }}>
       {children}
     </Modalize>
   );

@@ -24,10 +24,9 @@ export const formatNumber = (number: string) => {
       6,
     )}`;
   else
-    return `+${number.charAt(0)} (${number.substr(1, 3)}) ${number.substr(
-      4,
-      3,
-    )} - ${number.substr(7)}`;
+    return `(${number.substr(1, 3)}) ${number.substr(4, 3)} - ${number.substr(
+      7,
+    )}`;
 };
 
 export const makeName = (contact: any) => {
